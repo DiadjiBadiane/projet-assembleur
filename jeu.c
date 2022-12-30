@@ -34,14 +34,24 @@ int fin_jeu(int colonne, int plateau[X][Y], int pion){
         }
     }
 
-    for (int diag = 0; diag <= 3; diag ++){
-        if (ligne >= colonne){
+    for (int diag = 0; diag <= (2 - (ligne - colonne)); diag ++){
+        if (ligne >= colonne && diag <= 2){
             if (plateau[ligne - colonne + diag][diag] == pion && plateau[ligne - colonne + diag + 1][diag + 1] == pion && plateau[ligne - colonne + diag + 2][diag + 2] == pion && plateau[ligne - colonne + diag + 3][diag + 3] == pion){
                 return 0;
             }
         }
-        else{
-            if (plateau[diag][colonne - ligne + diag] == pion && plateau[diag + 1][colonne - ligne + diag + 1] == pion && plateau[diag + 2][colonne - ligne + diag + 2] == pion && plateau[diag + 3][colonne - ligne + diag + 3] == pion){
+    }
+    for (int diag2 = 0; diag2 <= (3 - (colonne - ligne)); diag2 ++){
+        if (colonne >= ligne && diag2 <= 3){
+            if (plateau[diag2][colonne - ligne + diag2] == pion && plateau[diag2 + 1][colonne - ligne + diag2 + 1] == pion && plateau[diag2 + 2][colonne - ligne + diag2 + 2] == pion && plateau[diag2 + 3][colonne - ligne + diag2 + 3] == pion){
+                return 0;    
+            }
+        }
+    }
+
+    for (int diag3 = 0; diag3 <= (3 - (6 - colonne) + ligne); diag3 ++){
+        if (6 - colonne >= ligne && diag3 <= 3){
+            if (plateau[diag3][(6 - colonne) - ligne + diag3] == pion && plateau[diag3 - 1][(6 - colonne) - ligne + diag3 - 1] == pion && plateau[diag3 - 2][(6 - colonne) - ligne + diag3 - 2] == pion && plateau[diag3 - 3][(6 - colonne) - ligne + diag3 - 3] == pion){
                 return 0;    
             }
         }
