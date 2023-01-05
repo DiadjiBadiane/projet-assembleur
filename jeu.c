@@ -22,18 +22,22 @@ int partie(int colonne, int plateau[X][Y], int pion){
 
 int fin_jeu(int colonne, int plateau[X][Y], int pion){
     int ligne = X - 2 - plateau[X - 1][colonne] + 1;
+
+    //colonne de 4//
     if (ligne + 3 <= X-2){ //Pour chaque case, les cases juste à droites doivent être identiques//
         if (plateau[ligne + 1][colonne] == pion && plateau[ligne + 2][colonne] == pion && plateau[ligne + 3][colonne] == pion){  
             return 0;
         }
     }
 
+    //ligne de 4//
     for(int colonne_k = 0; colonne_k <= 3; colonne_k ++){  //Les cases en dessous du pion doivent être identiques//
         if (plateau[ligne][colonne_k] == pion && plateau[ligne][colonne_k + 1] == pion && plateau[ligne][colonne_k + 2] == pion && plateau[ligne][colonne_k + 3] == pion){
             return 0;
         }
     }
 
+    //diagonale de 4//
     for (int diag = 0; diag <= (2 - (ligne - colonne)); diag ++){
         if (ligne >= colonne && diag <= 2){
             if (plateau[ligne - colonne + diag][diag] == pion && plateau[ligne - colonne + diag + 1][diag + 1] == pion && plateau[ligne - colonne + diag + 2][diag + 2] == pion && plateau[ligne - colonne + diag + 3][diag + 3] == pion){
