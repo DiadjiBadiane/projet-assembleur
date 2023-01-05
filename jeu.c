@@ -22,13 +22,13 @@ int partie(int colonne, int plateau[X][Y], int pion){
 
 int fin_jeu(int colonne, int plateau[X][Y], int pion){
     int ligne = X - 2 - plateau[X - 1][colonne] + 1;
-    if (ligne + 3 <= X-2){
+    if (ligne + 3 <= X-2){ //Pour chaque case, les cases juste à droites doivent être identiques//
         if (plateau[ligne + 1][colonne] == pion && plateau[ligne + 2][colonne] == pion && plateau[ligne + 3][colonne] == pion){  
             return 0;
         }
     }
 
-    for(int colonne_k = 0; colonne_k <= 3; colonne_k ++){
+    for(int colonne_k = 0; colonne_k <= 3; colonne_k ++){  //Les cases en dessous du pion doivent être identiques//
         if (plateau[ligne][colonne_k] == pion && plateau[ligne][colonne_k + 1] == pion && plateau[ligne][colonne_k + 2] == pion && plateau[ligne][colonne_k + 3] == pion){
             return 0;
         }
